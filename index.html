@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-size="large">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3efe8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Jot</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <div id="sign-in-screen" class="sign-in">
+      <h1>Jot</h1>
+      <p>Personal notes and to-dos</p>
+      <button id="authorize_button" class="primary" style="margin-top: 24px;">Sign in with Google</button>
+      <p id="auth-error" style="color: #c0392b; margin-top: 16px; display: none;"></p>
+    </div>
+
+    <div id="main-app" class="hidden">
+      <header>
+        <button id="menu-btn" class="menu-btn">Menu</button>
+        <div class="logo">Jot</div>
+        <div class="size-toggle" id="size-toggle">
+          <button data-size="normal">Normal</button>
+          <button data-size="large" class="active">Large</button>
+          <button data-size="larger">Larger</button>
+        </div>
+      </header>
+
+      <div id="sidebar" class="sidebar hidden">
+        <button id="collapse-btn">Collapse</button>
+        <button data-view="all">All notes</button>
+        <button data-view="pinned">Pinned</button>
+        <button data-view="archived">Archived</button>
+        <div id="label-list"></div>
+        <button id="signout-btn">Sign out</button>
+      </div>
+
+      <div class="main" id="main-content">
+        <div id="status-card" class="status-card">Loading…</div>
+        <div id="notes-list" class="notes-list"></div>
+        <div id="editor" class="editor hidden"></div>
+      </div>
+
+      <div class="bottom-bar" id="bottom-bar">
+        <button id="search-btn">Search</button>
+        <button id="new-btn">New</button>
+        <button id="archive-btn">Archive</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+  <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+</body>
+</html>
